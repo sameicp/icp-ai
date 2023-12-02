@@ -1,36 +1,37 @@
 // file: /prompts/promptUtils.js
+
 export function getSystemPrompt() {
   return {
     role: "system",
-    content: "You are a helpful assistant that specializes in generating creative pet names.",
+    content:
+      "You are an AI assistant specialized in providing innovative ideas for academic assignments.",
   };
 }
 
 export function getUserPrompt(input) {
   return {
     role: "user",
-    content: `Generate a creative pet name and short description for a ${input}.`,
+    content: `Generate innovative ideas and approaches for completing an academic assignment on '${input}'.`,
   };
 }
 
 export function getFunctions() {
   return [
     {
-      name: "generate_pet_name",
-      description: "Generate a pet name for an animal.",
+      name: "generate_assignment_ideas",
+      description: "Generate ideas and approaches for an academic assignment.",
       parameters: {
         type: "object",
         properties: {
-          animalPetName: {
-            type: "string",
-            description: "The generated pet name for the animal",
-          },
-          description: {
-            type: "string",
-            description: "The generated explanation of the pet name",
+          ideas: {
+            type: "array", // Use lowercase "array" for the array type
+            items: {
+              type: "string", // Define the type of items in the array (e.g., string)
+            },
+            description: "Array of generated ideas for the assignment",
           },
         },
-        "required": ["animalPetName", "description"]
+        required: ["ideas"],
       },
     },
   ];

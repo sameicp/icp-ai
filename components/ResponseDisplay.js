@@ -1,4 +1,5 @@
 // file: /components/ResponseDisplay.js
+
 const ResponseDisplay = ({ data, error, loading }) => {
   let content;
 
@@ -11,8 +12,15 @@ const ResponseDisplay = ({ data, error, loading }) => {
 
     content = (
       <>
-        <p>Name: {data.result.animalPetName}</p>
-        <p>Description: {data.result.description}</p>
+        {/* <div>{[...data.result.ideas]}</div>
+        <div>{data.result.ideas}</div> */}
+        <ul>
+          {data.result.ideas.map((idea, index) => (
+            <li key={index}>{idea}</li>
+          ))}
+        </ul>
+
+        {/* <AssignmentIdeasDisplay ideas={data.result.ideas} /> */}
       </>
     );
   } else {
